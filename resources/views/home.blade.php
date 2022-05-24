@@ -9,8 +9,8 @@
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-white">Total Orders</p>
-										<h5 class="mb-0 text-white">867</h5>
+										<p class="mb-0 text-white">Total Order</p>
+										<h5 class="mb-0 text-white">458877</h5>
 									</div>
 									<div class="ms-auto text-white"><i class='bx bx-cart font-30'></i>
 									</div>
