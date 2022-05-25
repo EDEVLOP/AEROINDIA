@@ -25,7 +25,17 @@
 						<div class="menu-title">Setting</div>
 					</a>
 					<ul>
-						<li> <a href="{{url('/country')}}"><i class="bx bx-right-arrow-alt"></i>Country</a>
+						<li> <a href="{{url('/addcountry')}}"><i class="bx bx-right-arrow-alt"></i>Country</a>
+						</li>
+                        <li> <a href="{{url('/addstate')}}"><i class="bx bx-right-arrow-alt"></i>State</a>
+						</li>
+                        <li> <a href="{{url('/addcity')}}"><i class="bx bx-right-arrow-alt"></i>City</a>
+						</li>
+                        <li> <a href="{{url('/currency')}}"><i class="bx bx-right-arrow-alt"></i>Currency</a>
+						</li>
+                        <li> <a href="{{url('/currency-exchange')}}"><i class="bx bx-right-arrow-alt"></i>Currency Exchange</a>
+						</li>
+                        <li> <a href="{{url('/fee-structure')}}"><i class="bx bx-right-arrow-alt"></i>Fee Structure</a>
 						</li>
 					</ul>
 				</li>
