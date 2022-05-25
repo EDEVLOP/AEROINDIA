@@ -30,6 +30,15 @@ Route::get('/addcountry', [App\Http\Controllers\CountryController::class, 'creat
 Route::post('/create_Country_Ins', [App\Http\Controllers\CountryController::class, 'createCountryPOSTIns'])->name('CreateCountryIns');
 Route::post('/create_Country_updt', [App\Http\Controllers\CountryController::class, 'createCountryPOSTUDT'])->name('CreateCountryUpdt');
 Route::get('/create_Country_dlt/{id}', [App\Http\Controllers\CountryController::class, 'createCountryPOSTDLT'])->name('CreateCountrydlt');
+Route::get('/country', [App\Http\Controllers\CountryController::class, 'index'])->name('home');
+
+// *****Currency ADD By Prasant********
+Route::get('/currency', [App\Http\Controllers\CurrencyController::class, 'index'])->name('currency');
+Route::post('/add-currency', [App\Http\Controllers\CurrencyController::class, 'store'])->name('add-currency');
+Route::post('/edit-currency/{id}', [App\Http\Controllers\CurrencyController::class, 'show'])->name('edit-currency');
+
+
+
     
 //State
 Route::get('/addstate',[App\Http\Controllers\StateController::class,'createState'])->name('createState');

@@ -456,6 +456,12 @@ font-size: 19px;
 
 }
 
+.pd_db_r1{
+	padding: 4px 17px;
+    display: inline-block;
+    border-radius: 40px;
+}
+
 
 .sidebar-wrapper .metismenu li:first-child {
 
