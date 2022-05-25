@@ -12,12 +12,23 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="javascript:;" class="">
+                    <a href="{{url('/home')}}" class="">
                         <div class="parent-icon"><i class='bx bx-home'></i>
                         </div>
                         <div class="menu-title">Dashboard</div>
                     </a>
                 </li>
+                <li>
+					<a href="#" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-spa' ></i>
+						</div>
+						<div class="menu-title">Setting</div>
+					</a>
+					<ul>
+						<li> <a href="{{url('/country')}}"><i class="bx bx-right-arrow-alt"></i>Country</a>
+						</li>
+					</ul>
+				</li>
             </ul>
             <!--end navigation-->
         </div>
