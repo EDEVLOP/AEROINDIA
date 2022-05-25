@@ -13,7 +13,7 @@ class StateController extends Controller
     {
         $countryfetch=Country::all();
         $statedatafetch=State::orderBy('id','DESC')->get();
-        return view('admin.AdminState',compact('countryfetch'),compact('statedatafetch'));
+        return view('admin.AdminState',compact('countryfetch','statedatafetch'));
     }
     public function createStatePostIns(Request $request)
     {
