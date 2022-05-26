@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Currency;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class CurrencyController extends Controller
 {
@@ -49,7 +50,8 @@ class CurrencyController extends Controller
         $currency->vch_currencyname = $request->input('currencyname');
         $currency->vch_status = $request->input('currencystatusddl');   
         $currency->save();
-        return redirect()->back()->with('message','Currency Added Successfully');
+        notify()->success('Currency Added Sucessfully!');
+        return redirect()->back();
     }
 
     /**
@@ -83,9 +85,19 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Currency $currency)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $currency = Currency::find($id);
+        $country_id = Currency:: where('id',$id)->get('vch_countryid');
+        //dd( $country_id[0]->vch_countryid);
+        $currency->vch_countryid = $country_id[0]->vch_countryid;
+        $currency->vch_currencycode = $request->input('udtcurrencycode');
+        $currency->vch_currencyname = $request->input('udtcurrencyname');
+        $currency->vch_status = $request->input('udtcurrencystatusddl');
+        $currency->update();
+        notify()->success('Currency updated Sucessfully!');
+        return redirect()->back();
     }
 
     /**
@@ -94,8 +106,13 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Currency $currency)
+    public function destroy($id)
     {
-        //
+
+        $currency=Crypt::decrypt($id);
+        $dlt_currency = Currency::find($currency);
+        $dlt_currency->delete();
+        notify()->success('Currency Deleted Sucessfully!');
+        return redirect()->back();
     }
 }

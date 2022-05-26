@@ -23,12 +23,7 @@
 						</div>
 					</div>
 				</div>
-                @if(Session::has('message'))
-                                <div class="alert alert-success border-0 bg-success alert-dismissible fade show">
-                                    <div class="text-white">{{Session::get('message')}}</div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                 @endif
+               
 				<div class="row row-cols-12">
 				<div class="card">
 					<div class="card-body">
@@ -50,14 +45,16 @@
                                 @foreach ($currency as $key=>$currencyfetch)
 									<tr>
                                         <td>{{$key+1}}</td>
-										<td>{{$currencyfetch->country->vch_countryname}}</td>
+										<td>{{$currencyfetch->countries->vch_countryname}}</td>
 										<td>{{$currencyfetch->vch_currencycode}}</td>
 										<td>{{$currencyfetch->vch_currencyname}}</td>
 										<td>{{$currencyfetch->vch_status}}</td>
                                        
                                         <td>
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#editModal{{$currencyfetch->id}}" class="bg-success text-white pd_db_r1"><i class="bx bx-edit"></i></a>
-                                                <a href="" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
+										@php $currency_id=Crypt::encrypt($currencyfetch->id); @endphp
+										
+										  <a href="{{ url('/delete-currency',$currency_id) }}" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
                                         </td>
                                         
                                         
@@ -87,35 +84,39 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 						</div>
 						<div class="modal-body">
-							<form class="row g-3" action="{{ url('add-currency') }}" method="post" enctype="multipart/form-data">
+							<form class="row g-3 needs-validation" action="{{ url('add-currency') }}" method="post" enctype="multipart/form-data" novalidate>
 								@csrf
 							
                                 <div class="col-md-6">
-									<label for="inputState" class="form-label">Country</label>
-									<select name="countrystatusddl" class="form-select">
-										<option selected="0">Choose...</option>
+									<label for="inputState" class="form-label">Country<span class="st_cl">*</span></label>
+									
+									<select name="countrystatusddl" class="form-select" required>
+										<option selected disabled value="">Choose...</option>
                                         @foreach($country as $countries)
 										<option value="{{$countries->id}}">{{$countries->vch_countryname }}</option>
                                         @endforeach
 										
 									</select>
-                                    
+									<div class="invalid-feedback">Please select a valid Country.</div>
 								</div>
 								<div class="col-md-6">
-									<label for="inputLastName" class="form-label">Currency Code</label>
-									<input type="text" class="form-control" name="currencycode">
+									<label for="inputLastName" class="form-label">Currency Code<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="currencycode" required>
+									<div class="invalid-feedback">Please provide a valid Currency Code.</div>
 								</div>
                                 <div class="col-md-6">
-									<label for="inputLastName" class="form-label">Currency Name</label>
-									<input type="text" class="form-control" name="currencyname">
+									<label for="inputLastName" class="form-label">Currency Name<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="currencyname" required>
+									<div class="invalid-feedback">Please provide a valid Currency Name.</div>
 								</div>
 								<div class="col-md-6">
-									<label for="inputState" class="form-label">Status</label>
-									<select name="currencystatusddl" class="form-select">
-										<option selected="0">Choose...</option>
-										<option>Active</option>
-										<option>Deactive</option>
+									<label for="inputState" class="form-label">Status<span class="st_cl">*</span></span></label>
+									<select name="currencystatusddl" class="form-select" required>
+										<option selected disabled value="">Choose...</option>
+										<option value="Active">Active</option>
+										<option value="Deactive">Deactive</option>
 									</select>
+									<div class="invalid-feedback">Please provide a valid Status.</div>
 								</div>
 								<div class="col-12">
 									<button type="submit" class="btn btn-primary px-5">Submit</button>
@@ -135,34 +136,28 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 						</div>
 						<div class="modal-body">
-							<form class="row g-3" action="{{url('/edit-currency',$currencyfetch->id)}}" method="post" enctype="multipart/form-data">
+							<form class="row g-3" action="{{url('/update-currency',$currencyfetch->id)}}" method="post" enctype="multipart/form-data">
 								@csrf
 							
-                                <div class="col-md-6">
-									<label for="inputState" class="form-label">Country</label>
-									<select name="countrystatusddl" class="form-select" disable>
-										<option selected="0">Choose...</option>
-                                        @foreach($country as $countries)
-										<option value="{{$countries->vch_countryname }}" selected>{{$currencyfetch->country->vch_countryname}}</option>
-                                        @endforeach
-										
-									</select>
-                                    
-								</div>
 								<div class="col-md-6">
-									<label for="inputLastName" class="form-label">Currency Code</label>
-									<input type="text" class="form-control" name="currencycode" value="{{$currencyfetch->vch_currencycode}}" disable>
+									<label for="inputLastName" class="form-label">Country<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="udtcurrencycode" value="{{$currencyfetch->countries->vch_countryname}}" readonly>
+								</div>
+
+								
+								<div class="col-md-6">
+									<label for="inputLastName" class="form-label">Currency Code<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="udtcurrencycode" value="{{$currencyfetch->vch_currencycode}}" readonly>
 								</div>
                                 <div class="col-md-6">
-									<label for="inputLastName" class="form-label">Currency Name</label>
-									<input type="text" class="form-control" name="currencyname">
+									<label for="inputLastName" class="form-label">Currency Name<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="udtcurrencyname" value="{{$currencyfetch->vch_currencyname}}">
 								</div>
 								<div class="col-md-6">
-									<label for="inputState" class="form-label">Status</label>
-									<select name="currencystatusddl" class="form-select">
-										<option selected="0">Choose...</option>
-										<option>Active</option>
-										<option>Deactive</option>
+									<label for="inputState" class="form-label">Status<span class="st_cl">*</span></label>
+									<select name="udtcurrencystatusddl" class="form-select">
+										<option value="Active"   @if ($currencyfetch-> vch_status=='Active') selected @endif>Active</option>
+										<option value="Deactive"   @if ($currencyfetch-> vch_status=='Deactive') selected @endif>Deactive</option>
 									</select>
 								</div>
 								<div class="col-12">
@@ -188,5 +183,27 @@
 	</script>
 	<script>
 		$("html").attr("class","color-sidebar sidebarcolor3 color-header headercolor1");
+	</script>
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+			(function () {
+			  'use strict'
+
+			  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+			  var forms = document.querySelectorAll('.needs-validation')
+
+			  // Loop over them and prevent submission
+			  Array.prototype.slice.call(forms)
+				.forEach(function (form) {
+				  form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+					  event.preventDefault()
+					  event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				  }, false)
+				})
+			})()
 	</script>
 	@endsection
