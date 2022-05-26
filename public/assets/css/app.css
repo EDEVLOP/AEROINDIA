@@ -462,6 +462,16 @@ font-size: 19px;
     border-radius: 40px;
 }
 
+.st_cl{
+	color:red;
+}
+
+.gry_dsl{
+	pointer-events: none;
+    cursor: not-allowed;
+    background-color: #e7e7e7;
+}
+
 
 .sidebar-wrapper .metismenu li:first-child {
 

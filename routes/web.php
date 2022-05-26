@@ -35,7 +35,21 @@ Route::get('/country', [App\Http\Controllers\CountryController::class, 'index'])
 // *****Currency ADD By Prasant********
 Route::get('/currency', [App\Http\Controllers\CurrencyController::class, 'index'])->name('currency');
 Route::post('/add-currency', [App\Http\Controllers\CurrencyController::class, 'store'])->name('add-currency');
-Route::post('/edit-currency/{id}', [App\Http\Controllers\CurrencyController::class, 'show'])->name('edit-currency');
+Route::post('/update-currency/{id}', [App\Http\Controllers\CurrencyController::class, 'update'])->name('update-currency');
+Route::get('/delete-currency/{id}', [App\Http\Controllers\CurrencyController::class, 'destroy']);
+
+// *****Currencyrate ADD By Prasant********
+Route::get('/currency-exchange', [App\Http\Controllers\ExchangerateController::class, 'createindex']);
+Route::post('/currencyrate-exchange', [App\Http\Controllers\ExchangerateController::class, 'exchangetratestore']);
+Route::post('/currencyrate-update/{id}', [App\Http\Controllers\ExchangerateController::class, 'exchangetrate'])->name('currency_update');
+Route::get('/delete-currency-rate/{id}', [App\Http\Controllers\ExchangerateController::class, 'destroyrate']);
+
+
+// *****FeeStructure ADD By Prasant********
+Route::get('/fee-structure', [App\Http\Controllers\FeestructureController::class, 'createindex']);
+Route::post('/fee-structure-add', [App\Http\Controllers\FeestructureController::class, 'feestructurestore']);
+Route::post('/feestructure-update/{id}', [App\Http\Controllers\FeestructureController::class, 'feestructureupdate']);
+
 
 
 
