@@ -52,7 +52,8 @@
                                        
                                         <td>
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#editModal{{$memberfetch->id}}" class="bg-success text-white pd_db_r1"><i class="bx bx-edit"></i></a>
-                                                <a href="" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
+										@php $member_id=Crypt::encrypt($memberfetch->id); @endphp
+                                                <a href="{{ url('/delete-feestructure',$member_id) }}" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
                                         </td>
                                         
                                         

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Feestructure;
 use App\Models\Currency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class FeestructureController extends Controller
 {
@@ -54,8 +55,12 @@ class FeestructureController extends Controller
     }
 
     
-    public function destroy(Feestructure $feestructure)
+    public function destroyfeestructure($id)
     {
-        //
+        $feestructure=Crypt::decrypt($id);
+        $dlt_feestructure = Feestructure::find($feestructure);
+        $dlt_feestructure->delete();
+        notify()->success('Feestructure Deleted Sucessfully!');
+        return redirect()->back();
     }
 }

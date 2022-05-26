@@ -49,6 +49,7 @@ Route::get('/delete-currency-rate/{id}', [App\Http\Controllers\ExchangerateContr
 Route::get('/fee-structure', [App\Http\Controllers\FeestructureController::class, 'createindex']);
 Route::post('/fee-structure-add', [App\Http\Controllers\FeestructureController::class, 'feestructurestore']);
 Route::post('/feestructure-update/{id}', [App\Http\Controllers\FeestructureController::class, 'feestructureupdate']);
+Route::get('/delete-feestructure/{id}', [App\Http\Controllers\FeestructureController::class, 'destroyfeestructure']);
 
 
 
