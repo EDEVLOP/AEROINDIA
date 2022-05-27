@@ -94,6 +94,7 @@ class ExchangerateController extends Controller
         $currency->vch_transactioncurrency = $exchnage_id[0]->vch_transactioncurrency;
         $currency->time_exchangedate = $request->input('udtcurrencydate');
         $currency->INT_exchangerate = $request->input('udtcurrencyrate'); 
+        $currency->updated_at = now();
         $currency->update();
         notify()->success('Currency updated Sucessfully!');
         return redirect()->back();
