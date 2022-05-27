@@ -95,6 +95,7 @@ class CurrencyController extends Controller
         $currency->vch_currencycode = $request->input('udtcurrencycode');
         $currency->vch_currencyname = $request->input('udtcurrencyname');
         $currency->vch_status = $request->input('udtcurrencystatusddl');
+        $currency->updated_at = now();
         $currency->update();
         notify()->success('Currency updated Sucessfully!');
         return redirect()->back();
