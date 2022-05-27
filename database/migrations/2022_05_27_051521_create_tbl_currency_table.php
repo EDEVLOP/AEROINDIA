@@ -19,6 +19,8 @@ class CreateTblCurrencyTable extends Migration
             $table->string('vch_currencycode', 255)->nullable();
             $table->string('vch_currencyname', 255)->nullable();
             $table->string('vch_status', 255)->nullable();
+            $table->timestamp('updated_at')->nullable()->useCurrent();
+            $table->timestamp('created_at')->nullable()->useCurrent();
         });
     }
 
