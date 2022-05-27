@@ -19,6 +19,8 @@ class CreateTblExchangerateTable extends Migration
             $table->string('vch_transactioncurrency', 255)->nullable();
             $table->string('time_exchangedate', 255)->nullable();
             $table->string('INT_exchangerate', 255)->nullable();
+            $table->timestamp('updated_at')->nullable()->useCurrent();
+            $table->timestamp('created_at')->nullable()->useCurrent();
         });
     }
 
