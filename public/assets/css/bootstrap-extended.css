@@ -83,14 +83,16 @@ a {
 }
 
 .btn-primary {
-	color: #fff;
-	background-color: #8833ff;
-	border-color: #8833ff
+    color: #fff;
+    background-color: #0372a6;
+    border-color: #0372a6;
+	padding-bottom: 10px;
 }
 .btn-primary:hover {
-	color: #fff;
-	background-color: #8531fa;
-	border-color: #8531fa
+    color: #fff;
+    background-color: #0372a6;
+    border-color: #0372a6;
+	padding-bottom: 10px;
 }
 .btn-check:focus+.btn-primary, .btn-primary:focus {
 	color: #fff;

@@ -11,13 +11,13 @@
 									<ol class="breadcrumb mb-0 p-0">
 										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 										</li>
-										<li class="breadcrumb-item active" aria-current="page">Add / View Country</li>
+										<li class="breadcrumb-item active" aria-current="page">Add / View professional Designation</li>
 									</ol>
 								</nav>
 							</div>
 							<div class="ms-auto">
 								<div class="btn-group">
-									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal"><i class="bx bx-plus"></i> Add Country</button>
+									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal"><i class="bx bx-plus"></i> Add professional Designation</button>
 								</div>
 							</div>
 						</div>
@@ -41,23 +41,23 @@
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>Country Code</th>
-										<th>Country Name</th>
+										<th>Professional Designation Code</th>
+										<th>Professional Designation Description</th>
 										<th>Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($result as $key=>$countryresult)
+									@foreach($getProfessionalDesignation as $key=>$getProfDesign)
 									<tr>
 										<td>{{$key+1}}</td>
-										<td>{{$countryresult->vch_countrycode}}</td>
-										<td>{{$countryresult->vch_countryname}}</td>
-										<td>{{$countryresult->vch_status}}</td>
+										<td>{{$getProfDesign->vch_pd_code}}</td>
+										<td>{{$getProfDesign->vch_pd_name}}</td>
+										<td>{{$getProfDesign->vch_pd_status}}</td>
 										<td>
-											<a href="#"  data-bs-toggle="modal" data-bs-target="#updateModal{{$countryresult->id}}" class="bg-success text-white pd_db_r1"><i class="bx bx-edit"></i></a>
-											@php $countryID= Crypt::encrypt($countryresult->id); @endphp
-											<a href="{{url('/create_Country_dlt',$countryID)}}" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
+											<a href="#"  data-bs-toggle="modal" data-bs-target="#updateModal{{$getProfDesign->id}}" class="bg-success text-white pd_db_r1"><i class="bx bx-edit"></i></a>
+											@php $bld_var=Crypt::encrypt($getProfDesign->id); @endphp
+											<a href="{{url('/create_professtionalDesignation_dlt',$bld_var)}}" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
 										</td>
 									</tr>
 									@endforeach
@@ -71,23 +71,23 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 						<div class="modal-header pd_11">
-							<h4 class="modal-title">Add Country</h4>
+							<h4 class="modal-title">Add Professional Designation</h4>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 						</div>
 						<div class="modal-body">
-							<form class="row g-3" action="{{url('create_Country_Ins')}}" method="post" enctype="multipart/form-data">
+							<form class="row g-3" action="{{url('create_professtionalDesignation_Ins')}}" method="post" enctype="multipart/form-data">
 								@csrf
 								<div class="col-md-12">
-									<label for="inputFirstName" class="form-label">Country Code<span class="st_cl">*</span></label>
-									<input type="text" class="form-control" name="countrycodetxt">
+									<label for="inputFirstName" class="form-label">Professional Designation Code<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="profdesigcodetxt">
 								</div>
-								<div class="col-md-6">
-									<label for="inputLastName" class="form-label">Country Name<span class="st_cl">*</span></label>
-									<input type="text" class="form-control" name="countrynametxt">
+								<div class="col-md-7">
+									<label for="inputLastName" class="form-label">Professional Designation Description<span class="st_cl">*</span></label>
+									<input type="text" class="form-control" name="profdesignametxt">
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-5">
 									<label for="inputState" class="form-label">Status<span class="st_cl">*</span></label>
-									<select name="countrystatusddl" class="form-select">
+									<select name="profdesigstatusddl" class="form-select">
 										<option selected disabled value="">Choose...</option>
 										<option value="Active">Active</option>
 										<option value="Inactive">Inactive</option>
@@ -101,34 +101,31 @@
 						</div>
 					</div>
 				</div>
-				@foreach($result as $key=>$countryresult)
-				<div class="modal" id="updateModal{{$countryresult->id}}">
+				@foreach($getProfessionalDesignation as $getProfDesign)
+                <div class="modal" id="updateModal{{$getProfDesign->id}}">
 					<div class="modal-dialog">
 						<div class="modal-content">
 						<div class="modal-header pd_11">
-							<h4 class="modal-title">Add Country</h4>
+							<h4 class="modal-title">Add Professional Designation</h4>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 						</div>
 						<div class="modal-body">
-							<form class="row g-3" action="{{url('create_Country_updt')}}" method="post" enctype="multipart/form-data">
+							<form class="row g-3" action="{{url('create_professtionalDesignation_Updt')}}" method="post" enctype="multipart/form-data">
 								@csrf
-								<input type="hidden" class="form-control" name="id" value="{{$countryresult->id}}">
+                                <input type="hidden" name="id" value="{{$getProfDesign->id}}">
 								<div class="col-md-12">
-									<label for="inputFirstName" class="form-label">Country Code</label>
-									<input type="text" class="form-control" name="Udtcountrycodetxt" value="{{$countryresult->vch_countrycode}}" disabled>
+									<label for="inputFirstName" class="form-label">Professional Designation Code</label>
+									<input type="text" class="form-control gry_dsl" name="UDTprofdesigcodetxt" value="{{$getProfDesign->vch_pd_code}}">
 								</div>
-								<div class="col-md-6">
-									<label for="inputLastName" class="form-label">Country Name</label>
-									<input type="text" class="form-control" name="Udtcountrynametxt" value="{{$countryresult->vch_countryname}}">
+								<div class="col-md-7">
+									<label for="inputLastName" class="form-label">Professional Designation Description</label>
+									<input type="text" class="form-control" name="UDTprofdesignametxt" value="{{$getProfDesign->vch_pd_name}}">
 								</div>
-								<div class="col-md-6">
-								
+								<div class="col-md-5">
 									<label for="inputState" class="form-label">Status</label>
-									<select name="Udtcountrystatusddl" class="form-select">
-
-										<option selected="0">Choose...</option>
-										<option value="Active" {{ ($countryresult->vch_status=="Active")? "selected" : "" }}>Active</option>
-										<option value="Inactive" {{ ($countryresult->vch_status=="Inactive")? "selected" : "" }}>Inactive</option>
+									<select name="UDTprofdesigstatusddl" class="form-select">
+										<option value="Active" {{($getProfDesign->vch_pd_status == "Active")? "selected" :""}}>Active</option>
+										<option value="Inactive" {{($getProfDesign->vch_pd_status =="Inactive")? "selected" :""}}>Inactive</option>
 									</select>
 								</div>
 								<div class="col-12">
@@ -139,7 +136,7 @@
 						</div>
 					</div>
 				</div>
-				@endforeach
+                @endforeach
 			</div>
 		</div>
 		@endsection
