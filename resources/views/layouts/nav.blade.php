@@ -4,7 +4,7 @@
                     <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <h4 class="logo-text">Aeroindia</h4>
+                    <h4 class="logo-text">ADMIN</h4>
                 </div>
                 <!-- <div class="toggle-icon ms-auto"><i class='bx bx-first-page'></i>
                 </div> -->
@@ -12,7 +12,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="{{url('/home')}}" class="">
+                    <a href="{{url('/')}}" class="">
                         <div class="parent-icon"><i class='bx bx-home'></i>
                         </div>
                         <div class="menu-title">Dashboard</div>
@@ -36,6 +36,12 @@
                         <li> <a href="{{url('/currency-exchange')}}"><i class="bx bx-right-arrow-alt"></i>Currency Rate</a>
 						</li>
                         <li> <a href="{{url('/fee-structure')}}"><i class="bx bx-right-arrow-alt"></i>Fee Structure</a>
+						</li>
+                        <li> <a href="{{url('/addprofesstionalDesignation')}}"><i class="bx bx-right-arrow-alt"></i>Professtional Designation</a>
+						</li>
+                        <li> <a href="{{url('/addqualificationmaster')}}"><i class="bx bx-right-arrow-alt"></i>Qualification Master</a>
+						</li>
+                        <li> <a href="{{url('/addmembertypemaster')}}"><i class="bx bx-right-arrow-alt"></i>Member Type Master</a>
 						</li>
 					</ul>
 				</li>

@@ -59,7 +59,7 @@ html.color-header .search-show {
 
 html.color-header .user-info .user-name {
 
-	color: #ffffff;
+	color: #1e353d;
 
 }
 
@@ -133,7 +133,7 @@ html.color-header .mobile-toggle-menu {
 
 html.headercolor1 .topbar {
 
-	background: #016fa9;
+	background: #ffffff;
 
 }
 
@@ -186,16 +186,16 @@ html.headercolor8 .topbar {
 
 
 html.color-sidebar .sidebar-wrapper{
-	background-color: #171717;
+	background-color: #ffffff;
     border-right: 1px solid rgb(228 228 228 / 0%);
 }
 html.color-sidebar .sidebar-header{
 	background-color: transparent;
     border-right: 1px solid #e4e4e400;
-    border-bottom: 1px solid rgb(255 255 255 / 15%);
+    border-bottom: 1px solid rgb(235 235 235 / 98%);
 }
 html.color-sidebar .logo-icon {
-    filter: invert(1) grayscale(100%) brightness(200%);
+    /* filter: invert(1) grayscale(100%) brightness(200%); */
 }
 
 html.color-sidebar .menu-label{
@@ -203,7 +203,7 @@ html.color-sidebar .menu-label{
 }
 
 html.color-sidebar .sidebar-wrapper .sidebar-header .logo-text {
-    color: #ffffff;
+    color: #000000;
 }
 
 html.color-sidebar .sidebar-wrapper .sidebar-header .toggle-icon {
@@ -215,18 +215,19 @@ html.color-sidebar .simplebar-scrollbar:before {
 }
 
 html.color-sidebar .sidebar-wrapper .metismenu .mm-active>a, html.color-sidebar .sidebar-wrapper .metismenu a:active, html.color-sidebar .sidebar-wrapper .metismenu a:focus, html.color-sidebar .sidebar-wrapper .metismenu a:hover {
-    color: #fff;
+	color: #fff;
     text-decoration: none;
-    background: rgb(255 255 255 / 18%);
+    background: #0372a6;
+    border-radius: 50px;
 }
 
 html.color-sidebar .sidebar-wrapper .metismenu a {
-    color: rgb(255 255 255 / 85%);
+    color: rgb(0 0 0 / 85%);
 }
 
 html.color-sidebar .sidebar-wrapper .metismenu ul {
-    border: 1px solid #ffffff00;
-    background: rgb(255 255 255 / 8%);
+    border: 1px solid #ffffffc7;
+    background: rgb(3 114 166 / 4%);
 }
 
 
@@ -275,7 +276,7 @@ html.color-sidebar.sidebarcolor2 .sidebar-wrapper {
 }
 
 html.color-sidebar.sidebarcolor3 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/3.png);
+    /* background-image: url(../images/bg-themes/3.png); */
 }
 
 html.color-sidebar.sidebarcolor4 .sidebar-wrapper {

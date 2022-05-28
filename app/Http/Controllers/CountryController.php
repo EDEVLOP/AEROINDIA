@@ -38,7 +38,8 @@ class CountryController extends Controller
         $post=Country::where('id',$request->id)->update([
             'vch_countrycode'=>$request->Udtcountrycodetxt,
             'vch_countryname'=>$request->Udtcountrynametxt,
-            'vch_status'=>$request->Udtcountrystatusddl
+            'vch_status'=>$request->Udtcountrystatusddl,
+            'DT_updatedon'=>now()
               ]);
         notify()->success('Country updated sucessfully!');
         return redirect('/addcountry');

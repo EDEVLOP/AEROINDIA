@@ -23,6 +23,15 @@
 						</div>
 					</div>
 				</div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 				<div class="row row-cols-12">
 				<div class="card">
 					<div class="card-body">
@@ -32,7 +41,7 @@
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>Country ID</th>
+										<th>Country Name</th>
 										<th>State Code</th>
 										<th>State Name</th>
 										<th>Status</th>
@@ -50,7 +59,7 @@
                                             <td>
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#updateModal{{$fetchstate->id}}" class="bg-success text-white pd_db_r1"><i class="bx bx-edit"></i></a>
                                                 @php $kontry_id= Crypt::encrypt($fetchstate->id);  @endphp
-                                                <a href="#" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
+                                                <a href="{{url('/create_state_dlt',$kontry_id)}}" class="bg-warning text-white pd_db_r1"><i class="bx bx-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -71,7 +80,7 @@
 							<form class="row g-3" action="{{url('/create_state_Ins')}}" method="post" enctype="multipart/form-data">
 								@csrf
                                 <div class="col-md-12">
-									<label for="inputState" class="form-label">Country</label>
+									<label for="inputState" class="form-label">Country<span class="st_cl">*</span></label>
 									<select name="Countryddl" class="form-select">
                                         @foreach($countryfetch as $fetchcountryname)
 										<option value="{{$fetchcountryname->id}}">{{$fetchcountryname->vch_countryname}}</option>
@@ -79,17 +88,17 @@
 									</select>
 								</div>
 								<div class="col-md-12">
-									<label for="inputFirstName" class="form-label">State Code</label>
+									<label for="inputFirstName" class="form-label">State Code<span class="st_cl">*</span></label>
 									<input type="text" class="form-control" name="Statecodetxt">
 								</div>
 								<div class="col-md-6">
-									<label for="inputLastName" class="form-label">State Name</label>
+									<label for="inputLastName" class="form-label">State Name<span class="st_cl">*</span></label>
 									<input type="text" class="form-control" name="Statenametxt">
 								</div>
 								<div class="col-md-6">
-									<label for="inputState" class="form-label">Status</label>
+									<label for="inputState" class="form-label">Status<span class="st_cl">*</span></label>
 									<select name="Statestatusddl" class="form-select">
-										<option selected="0">Choose...</option>
+                                        <option selected disabled value="">Choose...</option>
 										<option value="Active">Active</option>
 										<option value="Inactive">Inactive</option>
 									</select>
@@ -116,15 +125,13 @@
                                 <input type="hidden" name="id" value="{{$fetchstate->id}}">
                                 <div class="col-md-12">
 									<label for="inputState" class="form-label">Country</label>
-									<select name="udtCountryddl" class="form-select">
-                                        @foreach($countryfetch as $fetchcountryname)
-										<option value="{{$fetchcountryname->id}}" selected>{{$fetchcountryname->vch_countryname}}</option>
-                                        @endforeach
+									<select name="udtCountryddl" class="form-select gry_dsl" readonly>
+										<option value="{{$fetchstate->Int_CountryID}}" {{$fetchstate->Int_CountryID == $fetchstate->Int_CountryID? 'selected' : '' }} >{{$fetchstate->countryname->vch_countryname}}</option>   
 									</select>
 								</div>
 								<div class="col-md-12">
 									<label class="form-label">State Code</label>
-									<input type="text" class="form-control" name="UDTStatecodetxt" value="{{$fetchstate->vch_statecode}}">
+									<input type="text" class="form-control gry_dsl" readonly name="UDTStatecodetxt" value="{{$fetchstate->vch_statecode}}">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">State Name</label>
@@ -160,5 +167,27 @@
 	</script>
 	<script>
 		$("html").attr("class","color-sidebar sidebarcolor3 color-header headercolor1");
+	</script>
+    <script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+			(function () {
+			  'use strict'
+
+			  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+			  var forms = document.querySelectorAll('.needs-validation')
+
+			  // Loop over them and prevent submission
+			  Array.prototype.slice.call(forms)
+				.forEach(function (form) {
+				  form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+					  event.preventDefault()
+					  event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				  }, false)
+				})
+			})()
 	</script>
 	@endsection
