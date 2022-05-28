@@ -15,12 +15,12 @@ class CreateTblStateTable extends Migration
     {
         Schema::create('tbl_state', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('Int_CountryID');
-            $table->string('vch_statecode', 255)->nullable();
             $table->string('vch_statename', 255)->nullable();
-            $table->string('vch_statestatus', 255)->nullable();
-            $table->dateTime('DT_createdon')->useCurrent();
-            $table->dateTime('DT_updatedon')->useCurrent();
+            $table->integer('Int_CountryID')->default(1);
+            $table->string('vch_statecode', 255)->nullable();
+            $table->string('vch_statestatus', 255)->default('Active');
+            $table->timestamp('DT_createdon')->useCurrent();
+            $table->timestamp('DT_updatedon')->useCurrent();
         });
     }
 
