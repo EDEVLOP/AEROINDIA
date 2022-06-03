@@ -87,7 +87,7 @@
 								</div>
 								<div class="col-md-5">
 									<label for="inputState" class="form-label">Status<span class="st_cl">*</span></label>
-									<select name="profdesigstatusddl" class="form-select">
+									<select name="profdesigstatusddl" class="form-select" required>
 										<option selected disabled value="">Choose...</option>
 										<option value="Active">Active</option>
 										<option value="Inactive">Inactive</option>

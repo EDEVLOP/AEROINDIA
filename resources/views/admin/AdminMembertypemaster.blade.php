@@ -187,8 +187,8 @@
 								</div>
                                 <div class="col-md-6">
 									<label for="inputState" class="form-label">Status</label>
-									<select name="UDTstatusddl" class="form-select">
-										<option selected="0">Choose...</option>
+									<select name="UDTstatusddl" class="form-select" required>
+										<option selected disabled value="">Choose...</option>
 										<option value="Active" {{($fetchmember->vch_status == "Active")? "selected" :""}}>Active</option>
 										<option value="Inactive" {{($fetchmember->vch_status == "Inactive")? "selected" :""}}>Inactive</option>
 									</select>

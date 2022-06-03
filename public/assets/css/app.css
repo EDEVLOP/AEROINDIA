@@ -73,7 +73,16 @@ a {
 
 
 }
-
+.fw_400{
+	font-weight: 400!important;
+}
+.bdr_io{
+	max-width: 117px;
+    float: left;
+    margin-right: 11px;
+    margin-bottom: 11px;
+    border-radius: 2px;
+}
 
 /* Sidebar */
 

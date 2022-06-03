@@ -4,27 +4,27 @@
                     <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <h4 class="logo-text">ADMIN</h4>
+                    <h4 class="logo-text">{{ Auth::user()->name }}</h4>
                 </div>
                 <!-- <div class="toggle-icon ms-auto"><i class='bx bx-first-page'></i>
                 </div> -->
             </div>
             <!--navigation-->
-            <ul class="metismenu" id="menu">
+            <ul class="metismenu" id="menu" >
                 <li>
                     <a href="{{url('/')}}" class="">
                         <div class="parent-icon"><i class='bx bx-home'></i>
                         </div>
                         <div class="menu-title">Dashboard</div>
                     </a>
-                </li>
+                </li> 
                 <li>
 					<a href="#" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-spa' ></i>
 						</div>
 						<div class="menu-title">Setting</div>
 					</a>
-					<ul class="mm-collapse mm-show">
+					<ul class="mm-collapse">
 						<li> <a href="{{url('/addcountry')}}"><i class="bx bx-right-arrow-alt"></i>Country</a>
 						</li>
                         <li> <a href="{{url('/addstate')}}"><i class="bx bx-right-arrow-alt"></i>State</a>
@@ -45,12 +45,47 @@
 						</li>
 					</ul>
 				</li>
-
-                
-
-
-
+                <li>
+					<a href="#" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-spa' ></i>
+						</div>
+						<div class="menu-title">Branch</div>
+					</a>
+					<ul class="mm-collapse">
+                        <li> <a href="{{url('/addbranch')}}"><i class="bx bx-right-arrow-alt"></i>Add Branch</a>
+						</li>
+					</ul>
+				</li>
+                <li>
+                    <a href="{{url('/addbranchevent')}}" class="">
+                        <div class="parent-icon"><i class='bx bx-home'></i>
+                        </div>
+                        <div class="menu-title">Add Events</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('/addbranchgallery')}}" class="">
+                        <div class="parent-icon"><i class='bx bx-home'></i>
+                        </div>
+                        <div class="menu-title">Add Gallery</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('/approvebranchevent')}}" class="">
+                        <div class="parent-icon"><i class='bx bx-home'></i>
+                        </div>
+                        <div class="menu-title">Admin View Events</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('/approvebranchgallery')}}" class="">
+                        <div class="parent-icon"><i class='bx bx-home'></i>
+                        </div>
+                        <div class="menu-title">Admin View Gallery</div>
+                    </a>
+                </li>
             </ul>
             
             <!--end navigation-->
         </div>
+       

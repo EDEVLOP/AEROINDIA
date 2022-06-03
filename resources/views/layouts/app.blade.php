@@ -70,7 +70,7 @@
 	@notifyJs
     <x:notify-messages />
 	<script src="assets/js/app.js"></script>
-
+	<script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 	<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 	<script>
@@ -105,6 +105,20 @@
 				  }, false)
 				})
 			})()
+	</script>
+	<script>
+		$(function () {
+		for (var i = window.location, o = $(".metismenu li a").filter(function () {
+			return this.href == i;
+		}).addClass("").parent().addClass("mm-active");;) {
+			if (!o.is("li")) break;
+			o = o.parent("").addClass("mm-show").parent("").addClass("mm-active");
+		}
+	});
+	// metismenu
+	$(function () {
+		$('#menu').metisMenu();
+	});
 	</script>
 	@yield("script")
     @include("layouts.theme-control")

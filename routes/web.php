@@ -81,5 +81,36 @@ Route::post('/create_membertypemaster_Updt',[App\Http\Controllers\Membertypemast
 Route::get('/create_membertypemaster_dlt/{id}', [App\Http\Controllers\MembertypemasterController::class, 'createmembertypemasterPOSTDLT'])->name('createmembertypemasterPOSTDLT');
 
 
+//Add Branch -------- Added by Sunil 01/06/2022 ----
+Route::get('/addbranch',[App\Http\Controllers\AdminAddBranchController::class,'createbranch'])->name('createbranch');
+Route::post('/create_addbranch_Ins',[App\Http\Controllers\AdminAddBranchController::class,'createbranchPOSTINS'])->name('createbranchPOSTINS');
+Route::post('/create_addbranch_Updt',[App\Http\Controllers\AdminAddBranchController::class,'createbranchPOSTUDT'])->name('createbranchPOSTUDT');
+Route::get('/create_addbranch_dlt/{id}', [App\Http\Controllers\AdminAddBranchController::class, 'createbranchPOSTDLT'])->name('createbranchPOSTDLT');
+
+//Admin Approve View Event     ------Added by Sunil 02/06-2022 ----
+Route::get('/approvebranchevent',[App\Http\Controllers\ApproveBranchEventController::class,'approvebranchevent'])->name('approvebranchevent');
+Route::get('/create_approvebranchevent_Approved/{id}',[App\Http\Controllers\ApproveBranchEventController::class,'ApprovedEvents'])->name('ApprovedEvents');
+Route::get('/create_approvebranchevent_Rejected/{id}',[App\Http\Controllers\ApproveBranchEventController::class,'RejectedEvents'])->name('RejectedEvents');
+
+//Admin Approve View Gallery     ------Added by Sunil 02/06-2022 ----
+Route::get('/approvebranchgallery',[App\Http\Controllers\ApproveBranchGalleryController::class,'approvebranchgallery'])->name('approvebranchgallery');
+Route::get('/create_approvebranchgallery_Approved/{id}',[App\Http\Controllers\ApproveBranchGalleryController::class,'ApprovedGallery'])->name('ApprovedGallery');
+Route::get('/create_approvebranchgallery_Rejected/{id}',[App\Http\Controllers\ApproveBranchGalleryController::class,'RejectedGallery'])->name('RejectedGallery');
+
+
+//BranchEvent     ------Added by Sunil 01/06-2022 ----
+Route::get('/addbranchevent',[App\Http\Controllers\BranchEventController::class,'createbranchevent'])->name('createbranchevent');
+Route::post('/create_branchevent_Ins',[App\Http\Controllers\BranchEventController::class,'createbrancheventPOSTINS'])->name('createbrancheventPOSTINS');
+Route::post('/create_branchevent_Updt',[App\Http\Controllers\BranchEventController::class,'createbrancheventPOSTUDT'])->name('createbrancheventPOSTUDT');
+Route::get('/create_branchevent_dlt/{id}', [App\Http\Controllers\BranchEventController::class, 'createbrancheventPOSTDLT'])->name('createbrancheventPOSTDLT');
+
+
+//BranchGallery ------Added by Sunil 02/06-2022 ----
+Route::get('/addbranchgallery',[App\Http\Controllers\BranchGalleryController::class,'createbranchgallery'])->name('createbranchgallery');
+Route::post('/create_branchgallery_Ins',[App\Http\Controllers\BranchGalleryController::class,'createbranchgalleryPOSTINS'])->name('createbranchgalleryPOSTINS');
+Route::post('/create_branchgallery_Updt',[App\Http\Controllers\BranchGalleryController::class,'createbranchgalleryPOSTUDT'])->name('createbranchgalleryPOSTUDT');
+
+
+
 });
  Auth::routes();  
