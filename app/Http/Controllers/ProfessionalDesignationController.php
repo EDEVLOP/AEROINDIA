@@ -18,12 +18,12 @@ class ProfessionalDesignationController extends Controller
         $validated = $request->validate([
             'profdesigcodetxt' => 'required',
             'profdesignametxt' => 'required',
-            'profdesigstatusddl' => 'required',
+            //'profdesigstatusddl' => 'required',
         ],
         [
             'profdesigcodetxt.required' => 'Please enter professional designation code',
-            'profdesignametxt.required' => 'Please enter professional designation description',
-            'profdesigstatusddl.required' => 'Please select status'
+            'profdesignametxt.required' => 'Please enter professional designation description'
+            //'profdesigstatusddl.required' => 'Please select status'
         ]);
         $post= new ProfessionalDesignation;
         $post->vch_pd_code=$request->profdesigcodetxt;

@@ -21,15 +21,15 @@ class MembertypemasterController extends Controller
             'membertypeddl' => 'required',
             'duescode1' => 'required',
             'duescode2' => 'required',
-            'statusddl' => 'required',
+            //'statusddl' => 'required',
         ],
         [
             'membertypecodetxt.required' => 'Please enter member type code',
             'membertypenametxt.required' => 'Please enter member type name',
             'membertypeddl.required' => 'Please select member description',
             'duescode1.required' => 'Please enter dues code1',
-            'duescode2.required' => 'Please enter dues code2',
-            'statusddl.required' => 'Please choose status'
+            'duescode2.required' => 'Please enter dues code2'
+            //'statusddl.required' => 'Please choose status'
         ]);
         $post=new Membertypemaster;
         $post->vch_membTCode=$request->membertypecodetxt;

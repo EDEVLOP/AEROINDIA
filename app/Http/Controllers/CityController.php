@@ -21,13 +21,13 @@ class CityController extends Controller
             'Stateddl' => 'required',
             'Citycodetxt' => 'required',
             'Citynametxt' => 'required',
-            'Statestatusddl' => 'required',
+            // 'Statestatusddl' => 'required',
         ],
         [
             'Stateddl.required' => 'Please select city',
             'Citycodetxt.required' => 'Please enter city code',
-            'Citynametxt.required' => 'Please enter city name',
-            'Statestatusddl.required' => 'Please select status'
+            'Citynametxt.required' => 'Please enter city name'
+            // 'Statestatusddl.required' => 'Please select status'
         ]);
 
         $post=new City;
